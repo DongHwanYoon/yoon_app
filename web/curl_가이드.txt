@@ -1,0 +1,16 @@
+1. download(windows버전)
+https://curl.haxx.se/windows/
+
+2. 기본사용법
+
+    가. -X : GET, POST 등 요청 메소드 사용
+
+    >curl -X GET http://.....
+    >curl -X POST http://.....
+
+    나. -o : 지정한 이름으로 요청 결과 저장
+
+    >curl -o index.html http://www....../index.html
+
+    나머지는 google !!
+    
