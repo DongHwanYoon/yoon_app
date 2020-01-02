@@ -13,19 +13,19 @@ import kr.ac.sunmoon.model.service.PortfolioService;
  * Servlet implementation class PortfolioDetalSearchServlet
  */
 @WebServlet("/portfolio_detail.do")
-public class PortfolioDetalSearchServlet extends HttpServlet {
+public class PortfolioDetalServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// parameter : no
 		int no = Integer.parseInt(request.getParameter("no"));
 		PortfolioService pService = new PortfolioService();
 		try {
-			//request.setCharacterEncoding("utf-8"); // title을 한글로 받을수도 있으므로 인코딩 설정
+			//request.setCharacterEncoding("utf-8"); // title을 한글로 받을 수도 있으므로 인코딩 설정
 			pService.getDetail(no);
-			request.setAttribute("no", pService.getDetail(no));
-			response.sendRedirect("portfolio_list.do");
+			request.setAttribute("portfolio", pService.getDetail(no));
+			request.getRequestDispatcher("portfolio_detail.jsp").forward(request, response); // 포워딩. 페이지 이동하는 코드
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMsg", e.getMessage());
